@@ -32,6 +32,8 @@ public class LoginPage
 
 
     public String getIncorrectText() {
+        WebDriverWait wait = new WebDriverWait(this.driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"password-challenge\"]/form/p")));
         return driver.findElement(By.xpath("//*[@id=\"password-challenge\"]/form/p")).getText();
     }
 }
