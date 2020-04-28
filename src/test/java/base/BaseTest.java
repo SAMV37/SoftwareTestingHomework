@@ -28,7 +28,7 @@ public class BaseTest {
 
     @BeforeMethod
     private void goHome() {
-        driver.get("https://github.com");
+        driver.get("https://yahoo.com");
         homePage = new HomePage(driver);
     }
 

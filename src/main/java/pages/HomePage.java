@@ -13,11 +13,7 @@ public class HomePage {
     }
 
     public LoginPage clickLoginButton() {
-        WebElement loginButton = driver.findElement(By.xpath("/html/body/div[1]/header/div/div[2]/div[2]/a[1]"));
-        if (!loginButton.isDisplayed()) {
-            driver.findElement(By.xpath("/html/body/div[1]/header/div/div[1]/div[2]/button")).click();
-        }
-        loginButton.click();
+        driver.findElement(By.xpath("//*[@id=\"header-signin-link\"]")).click();
         return new LoginPage(driver);
     }
 }

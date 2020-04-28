@@ -11,17 +11,17 @@ import static org.testng.Assert.assertEquals;
 
 public class LoginTest extends BaseTest
 {
-    public final String username = "test88878";
-    public final String password = "TestingPassword";
-    public final String wrongPassword = "wrongPassword";
+    private final String username = "test88sp878";
+    private final String password = "TestingPassword";
+    private final String wrongPassword = "wrongPassword";
+    private final String wrongPasswordErrorMessage = "Invalid password. Please try again";
 
     @Test
     public void testSuccessfulLogin()
     {
         LoginPage loginPage = homePage.clickLoginButton();
         loginPage.setUsername(username);
-        loginPage.setPassword(password);
-        MainPage mainPage = loginPage.clickBtn();
+        MainPage mainPage = loginPage.setPassword(password);
         assertEquals(mainPage.getUsername(), username);
     }
 
@@ -31,8 +31,7 @@ public class LoginTest extends BaseTest
         LoginPage loginPage = homePage.clickLoginButton();
         loginPage.setUsername(username);
         loginPage.setPassword(wrongPassword);
-        loginPage.clickBtn();
 
-        assertEquals(loginPage.getIncorrectText(), "Incorrect username or password.");
+        assertEquals(loginPage.getIncorrectText(), wrongPasswordErrorMessage);
     }
 }

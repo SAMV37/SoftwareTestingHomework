@@ -9,9 +9,8 @@ public class LoginPage
 {
     private final WebDriver driver;
 
-    private final By usernameField = By.id("login_field");
-    private final By passwordField = By.id("password");
-    private final By loginButton = By.xpath("//*[@id=\"login\"]/form/div[4]/input[9]");
+    private final By usernameField = By.xpath("//*[@id=\"login-username\"]");
+    private final By passwordField = By.xpath("//*[@id=\"login-passwd\"]");
 
     public LoginPage(WebDriver driver) {
         this.driver = driver;
@@ -21,23 +20,18 @@ public class LoginPage
     public void setUsername(String username) {
         WebDriverWait wait = new WebDriverWait(this.driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(usernameField));
-        driver.findElement(usernameField).sendKeys(username);
+        driver.findElement(usernameField).sendKeys(username + "\n");
     }
 
-    public void setPassword(String password) {
+    public MainPage setPassword(String password) {
         WebDriverWait wait = new WebDriverWait(this.driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField));
-        driver.findElement(passwordField).sendKeys(password);
-    }
-
-    public MainPage clickBtn() {
-        WebDriverWait wait = new WebDriverWait(this.driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
-        driver.findElement(loginButton).click();
+        driver.findElement(passwordField).sendKeys(password + "\n");
         return new MainPage(driver);
     }
 
+
     public String getIncorrectText() {
-        return driver.findElement(By.xpath("//*[@id=\"js-flash-container\"]/div/div")).getText();
+        return driver.findElement(By.xpath("//*[@id=\"password-challenge\"]/form/p")).getText();
     }
 }

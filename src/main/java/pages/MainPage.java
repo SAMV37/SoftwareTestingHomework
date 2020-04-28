@@ -2,26 +2,29 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage {
     WebDriver driver;
 
-    private final By nicknameText = By.xpath("/html/body/div[1]/header/div[7]/details/details-menu/div[1]/a/strong");
+    private final By usernamePath = By.xpath("//*[@id=\"profile-user-info-subheading\"]");
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public String getUsername(){
-        WebElement userImage = driver.findElement(By.xpath("/html/body/div[1]/header/div[7]/details/summary"));
+        By button = (By.xpath("//*[@id=\"header-profile-button\"]"));
 
-        if(userImage.isDisplayed()) {
-            userImage.click();
-            return driver.findElement(nicknameText).getText();
-        }else{
-            driver.findElement(By.xpath("/html/body/div[1]/header/div[2]/button")).click();
-            return driver.findElement(By.xpath("/html/body/div[1]/header/div[3]/nav/a[5]")).getText();
-        }
+        WebDriverWait wait = new WebDriverWait(this.driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(button));
+
+        driver.findElement(button).click();
+
+        WebDriverWait wait2 = new WebDriverWait(this.driver, 10);
+        wait2.until(ExpectedConditions.visibilityOfElementLocated(usernamePath));
+
+        return driver.findElement(usernamePath).getText();
     }
 }
