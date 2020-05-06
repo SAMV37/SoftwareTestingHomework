@@ -27,4 +27,17 @@ public class MainPage {
 
         return driver.findElement(usernamePath).getText();
     }
+
+    public UserProfilePage navigateToProfilePage(){
+        WebDriverWait wait = new WebDriverWait(this.driver, 10);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header-profile-button\"]")));
+
+        driver.findElement(By.xpath("//*[@id=\"header-profile-button\"]")).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header-profile-panel\"]/li[6]")));
+
+        driver.findElement(By.xpath("//*[@id=\"header-profile-panel\"]/li[6]")).click();
+
+        return new UserProfilePage(driver);
+    }
 }
