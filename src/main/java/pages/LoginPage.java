@@ -24,7 +24,7 @@ public class LoginPage
     }
 
     public MainPage setPassword(String password) {
-        WebDriverWait wait = new WebDriverWait(this.driver, 10);
+        WebDriverWait wait = new WebDriverWait(this.driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(passwordField));
         driver.findElement(passwordField).sendKeys(password + "\n");
         return new MainPage(driver);
