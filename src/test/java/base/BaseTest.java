@@ -33,6 +33,8 @@ public class BaseTest {
 
     protected LoginTest loginTest;
 
+    protected SearchTest searchTest;
+
     @BeforeClass
     public void setUp() {
         try {

@@ -1,5 +1,6 @@
 package test;
 
+import base.SearchTest;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
@@ -26,6 +27,7 @@ public class LocalWebDriverTest extends BaseTest
         driver.get(website);
         homePage = new HomePage(driver);
         loginTest = new LoginTest();
+        searchTest = new SearchTest();
     }
 
     private ChromeOptions getChromeOptions()
@@ -46,6 +48,9 @@ public class LocalWebDriverTest extends BaseTest
     {
         loginTest.testFailLogin(homePage);
     }
+
+    @Test
+    public void testSearch(){ searchTest.testSearch(homePage);}
 
     @Test
     public void testUserProfilePage()

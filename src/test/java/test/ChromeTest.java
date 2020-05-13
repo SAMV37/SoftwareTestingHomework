@@ -1,5 +1,6 @@
 package test;
 
+import base.SearchTest;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -25,6 +26,8 @@ public class ChromeTest extends BaseTest
         homePage = new HomePage(driver);
 
         loginTest = new LoginTest();
+
+        searchTest = new SearchTest();
     }
 
     @Test
@@ -44,5 +47,10 @@ public class ChromeTest extends BaseTest
     public void testUserProfilePage()
     {
         loginTest.testUserProfilePage(homePage);
+    }
+
+    @Test
+    public void testSearch(){
+        searchTest.testSearch(homePage);
     }
 }

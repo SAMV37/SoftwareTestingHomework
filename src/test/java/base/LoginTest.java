@@ -2,12 +2,12 @@ package base;
 
 import org.testng.annotations.Test;
 
-import pages.HomePage;
-import pages.LoginPage;
-import pages.MainPage;
-import pages.UserProfilePage;
+import pages.*;
+
+import java.util.ArrayList;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class LoginTest {
